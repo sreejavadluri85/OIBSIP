@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f4f9;
+            color: #263238;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #34347d;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .navbar h2 {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #ffd166;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 650px;
+            margin: 55px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #34347d;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #5956d6;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 14px;
+            background: #5956d6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .calculate-btn:hover {
+            background: #403db5;
+        }
+
+        /* Result */
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .result h2 {
+            margin-bottom: 8px;
+        }
+
+        .underweight {
+            background: #dceeff;
+            color: #1769aa;
+        }
+
+        .normal {
+            background: #dff5e5;
+            color: #16803c;
+        }
+
+        .overweight {
+            background: #fff0cf;
+            color: #a66b00;
+        }
+
+        .obese {
+            background: #ffe0e0;
+            color: #c62828;
+        }
+
+        .error {
+            background: #ffe0e0;
+            color: #b71c1c;
+            padding: 12px;
+            border-radius: 7px;
+            margin-bottom: 15px;
+        }
+
+        .success {
+            background: #dff5e5;
+            color: #16803c;
+            padding: 12px;
+            border-radius: 7px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #777;
+        }
+
+        @media(max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <h2>BMI Calculator</h2>
+
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('history') }}">BMI History</a>
+            <a href="{{ url_for('show_graph') }}">BMI Graph</a>
+            <a href="{{ url_for('about') }}">About</a>
+        </div>
+
+    </nav>
+
+
+    <!-- BMI Calculator -->
+    <div class="container">
+
+        <div class="card">
+
+            <h1>Calculate Your BMI</h1>
+
+            <p class="subtitle">
+                Check your Body Mass Index easily
+            </p>
+
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+                {% for category, message in messages %}
+
+                    <div class="{{ 'error' if category == 'error' else 'success' }}">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endwith %}
+
+
+            <!-- Input Form -->
+            <form action="{{ url_for('calculate') }}" method="POST">
+
+                <div class="form-group">
+
+                    <label for="name">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        pattern="[A-Za-z ]+"
+                        title="Please enter letters and spaces only"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="weight">Weight (kg)</label>
+
+                    <input
+                        type="number"
+                        id="weight"
+                        name="weight"
+                        placeholder="Enter weight in kg"
+                        min="0.1"
+                        step="0.1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="height">Height (meters)</label>
+
+                    <input
+                        type="number"
+                        id="height"
+                        name="height"
+                        placeholder="Enter height in meters"
+                        min="0.01"
+                        step="0.01"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="calculate-btn">
+                    Calculate BMI
+                </button>
+
+            </form>
+
+
+            <!-- BMI Result -->
+            {% if bmi is defined and bmi is not none %}
+
+                <div class="result {{ category_class }}">
+
+                    <h2>Your BMI: {{ "%.2f"|format(bmi) }}</h2>
+
+                    <p>
+                        Category:
+                        <strong>{{ category }}</strong>
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <footer>
+        <p>BMI Calculator | Python Flask Project | Oasis Infobyte</p>
+    </footer>
+
+</body>
+</html>
