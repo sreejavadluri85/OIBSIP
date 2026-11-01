@@ -1,6 +1,6 @@
-/* =========================================
+/* ==========================================
    GLOBAL RESET
-========================================= */
+========================================== */
 
 * {
     margin: 0;
@@ -9,409 +9,1210 @@
     font-family: Arial, sans-serif;
 }
 
-
-/* =========================================
-   BODY
-========================================= */
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-    background: #f1f4f9;
-    color: #263238;
+    background: #f5f6ff;
+    color: #202040;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    line-height: 1.6;
 }
 
 
-/* =========================================
+/* ==========================================
    NAVBAR
-========================================= */
+========================================== */
 
 .navbar {
-    background: #34347d;
-    padding: 18px 6%;
+    background: #29265f;
+    color: white;
+    padding: 15px 6%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+
+    gap: 25px;
     flex-wrap: wrap;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
-.navbar h2 {
-    color: white;
-    font-size: 24px;
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
+
+.brand-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #7657f6,
+        #a876ff
+    );
+}
+
+.brand h2 {
+    color: white;
+    font-size: 22px;
+    margin: 0;
+}
+
+.brand span {
+    display: block;
+    font-size: 12px;
+    color: #d7d4ff;
+    margin-top: 2px;
+}
+
+
+/* NAV LINKS */
 
 .nav-links {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 22px;
+
+    gap: 8px;
     flex-wrap: wrap;
 }
 
 .nav-links a {
-    color: white;
+    color: #e9e8ff;
     text-decoration: none;
+
+    padding: 9px 13px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #5549c9;
+    color: white;
+}
+
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+
+.home-hero {
+    min-height: 480px;
+
+    padding: 70px 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0eeff,
+            #e7e5ff,
+            #f7f6ff
+        );
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+    flex: 1;
+    max-width: 650px;
+}
+
+.hero-tag,
+.section-tag {
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    background: #e4dfff;
+
+    color: #5549c9;
+
+    font-size: 12px;
     font-weight: bold;
+
+    letter-spacing: 0.5px;
+}
+
+.hero-content h1 {
+    margin-top: 20px;
+
+    font-size: 52px;
+    line-height: 1.15;
+
+    color: #202040;
+}
+
+.hero-content h1 span {
+    color: #6246ea;
+}
+
+.hero-content p {
+    margin-top: 22px;
+
+    max-width: 560px;
+
+    color: #666680;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+/* HERO FEATURES */
+
+.hero-features {
+    margin-top: 25px;
+
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-features span {
+    background: white;
+
+    padding: 8px 13px;
+
+    border-radius: 8px;
+
+    color: #444;
+
+    font-size: 14px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+/* HERO BUTTON */
+
+.hero-btn {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding: 14px 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6246ea,
+            #865cff
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    transition: 0.3s ease;
+
+    box-shadow:
+        0 8px 20px rgba(98, 70, 234, 0.25);
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(98, 70, 234, 0.35);
+}
+
+
+/* ==========================================
+   HERO VISUAL
+========================================== */
+
+.hero-visual {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-circle {
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6548e8,
+            #9a7bff
+        );
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    position: relative;
+
+    box-shadow:
+        0 20px 50px rgba(98, 70, 234, 0.3);
+
+    animation:
+        floatCircle 4s ease-in-out infinite;
+}
+
+.hero-heart {
+    font-size: 75px;
+}
+
+.hero-bmi-text {
+    text-align: center;
+}
+
+.hero-bmi-text strong {
+    display: block;
+    font-size: 45px;
+}
+
+.hero-bmi-text span {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+
+@keyframes floatCircle {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ==========================================
+   CALCULATOR SECTION
+========================================== */
+
+.calculator-section {
+    padding: 80px 7%;
+
+    background: #f8f9ff;
+}
+
+.section-heading {
+    text-align: center;
+
+    max-width: 700px;
+
+    margin: 0 auto 45px;
+}
+
+.section-heading h2 {
+    margin-top: 15px;
+
+    font-size: 34px;
+
+    color: #25234d;
+}
+
+.section-heading p {
+    margin-top: 12px;
+
+    color: #707080;
+
+    font-size: 16px;
+}
+
+
+/* ==========================================
+   CALCULATOR LAYOUT
+========================================== */
+
+.calculator-layout {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 30px;
+
+    align-items: stretch;
+}
+
+
+/* ==========================================
+   CALCULATOR CARD
+========================================== */
+
+.calculator-card,
+.bmi-info-card {
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 10px 35px rgba(40, 35, 100, 0.08);
+}
+
+
+/* CARD HEADING */
+
+.card-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 28px;
+}
+
+.heading-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #eeeaff;
+
+    font-size: 24px;
+}
+
+.card-heading h2 {
+    color: #29265f;
+    font-size: 22px;
+}
+
+.card-heading p {
+    color: #888;
+
+    font-size: 14px;
+
+    margin-top: 3px;
+}
+
+
+/* ==========================================
+   FORM
+========================================== */
+
+.bmi-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    color: #42405e;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border:
+        1px solid #dedcf0;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #fcfcff;
+
+    font-size: 15px;
+
+    color: #333;
+
+    transition: 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #6246ea;
+
+    box-shadow:
+        0 0 0 3px rgba(98, 70, 234, 0.12);
+}
+
+
+/* TWO COLUMN FORM */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+
+/* ==========================================
+   CALCULATE BUTTON
+========================================== */
+
+.calculate-btn {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6246ea,
+            #865cff
+        );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    margin-top: 5px;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(98, 70, 234, 0.28);
+}
+
+
+/* ==========================================
+   FLASH MESSAGES
+========================================== */
+
+.message {
+    padding: 13px 16px;
+
+    border-radius: 9px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+.message.error {
+    background: #ffe5e5;
+    color: #b42318;
+
+    border-left:
+        4px solid #e53935;
+}
+
+.message.success {
+    background: #e3f8e9;
+    color: #167a38;
+
+    border-left:
+        4px solid #2eaa58;
+}
+
+
+/* ==========================================
+   BMI INFO CARD
+========================================== */
+
+.bmi-info-card {
+    background:
+        linear-gradient(
+            145deg,
+            #29265f,
+            #5549a8
+        );
+
+    color: white;
+}
+
+.info-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    font-size: 30px;
+
+    margin-bottom: 25px;
+}
+
+.bmi-info-card h2 {
+    font-size: 27px;
+
+    margin-bottom: 15px;
+}
+
+.bmi-info-card > p {
+    color: #e5e3ff;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+/* BMI RANGES */
+
+.bmi-ranges {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.range-item {
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    padding: 14px 16px;
+
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.range-item span {
+    font-weight: 500;
+}
+
+.range-item strong {
+    font-size: 14px;
+}
+
+.underweight-range {
+    border-left: 4px solid #58b8ff;
+}
+
+.normal-range {
+    border-left: 4px solid #48d879;
+}
+
+.overweight-range {
+    border-left: 4px solid #ffc107;
+}
+
+.obese-range {
+    border-left: 4px solid #ff6666;
+}
+
+
+/* ==========================================
+   BMI RESULT SECTION
+========================================== */
+
+.result-section {
+    padding: 70px 7%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr 0.8fr;
+
+    gap: 30px;
+
+    align-items: stretch;
+}
+
+
+/* RESULT CARD */
+
+.result-card-modern,
+.result-body-card {
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 40px;
+
+    box-shadow:
+        0 10px 35px rgba(40, 35, 100, 0.08);
+}
+
+.result-card-modern {
+    text-align: center;
+}
+
+.result-label {
+    display: inline-block;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    color: #6246ea;
+
+    background: #eeeaff;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+}
+
+.result-card-modern h2 {
+    font-size: 75px;
+
+    color: #29265f;
+
+    margin: 18px 0 12px;
+}
+
+
+/* RESULT CATEGORY */
+
+.result-category {
+    display: inline-block;
+
+    padding: 9px 22px;
+
+    border-radius: 25px;
+
+    font-weight: bold;
+}
+
+.result-category.underweight {
+    background: #d9f0ff;
+    color: #1676b5;
+}
+
+.result-category.normal {
+    background: #dff8e7;
+    color: #14813d;
+}
+
+.result-category.overweight {
+    background: #fff2d4;
+    color: #a66b00;
+}
+
+.result-category.obese {
+    background: #ffe1e1;
+    color: #c62828;
+}
+
+.result-card-modern > p {
+    color: #777;
+
+    margin: 20px auto;
+
+    max-width: 450px;
+}
+
+
+/* RESULT DETAILS */
+
+.result-details {
+    margin-top: 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.result-details div {
+    background: #f7f7ff;
+
+    padding: 15px;
+
+    border-radius: 10px;
+}
+
+.result-details span {
+    display: block;
+
+    font-size: 13px;
+
+    color: #777;
+
+    margin-bottom: 6px;
+}
+
+.result-details strong {
+    color: #29265f;
+}
+
+
+/* RESULT ACTIONS */
+
+.result-actions {
+    margin-top: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.primary-action,
+.secondary-action {
+    text-decoration: none;
+
+    padding: 12px 20px;
+
+    border-radius: 9px;
+
+    font-weight: bold;
+
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: #ffd166;
+.primary-action {
+    background: #6246ea;
+
+    color: white;
+}
+
+.secondary-action {
+    background: #eeeaff;
+
+    color: #5549c9;
+}
+
+.primary-action:hover,
+.secondary-action:hover {
+    transform: translateY(-2px);
 }
 
 
-/* =========================================
-   MAIN CONTAINER
-========================================= */
+/* ==========================================
+   BODY RESULT CARD
+========================================== */
+
+.result-body-card {
+    text-align: center;
+}
+
+.result-body-card h2 {
+    color: #29265f;
+
+    font-size: 22px;
+}
+
+.body-image-wrapper {
+    min-height: 330px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.human-body-image {
+    width: 100%;
+
+    max-width: 260px;
+
+    height: 310px;
+
+    object-fit: contain;
+
+    animation:
+        bodyFloat 3s ease-in-out infinite;
+}
+
+.result-body-card p {
+    color: #666;
+}
+
+.result-body-card strong {
+    color: #6246ea;
+}
+
+
+@keyframes bodyFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ==========================================
+   FEATURES SECTION
+========================================== */
+
+.features-section {
+    background: #eeeeff;
+
+    padding: 80px 7%;
+}
+
+.features-grid {
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.feature-card {
+    background: white;
+
+    padding: 28px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    transition: 0.3s ease;
+
+    box-shadow:
+        0 8px 25px rgba(40, 35, 100, 0.06);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 16px;
+
+    background: #eeeaff;
+
+    font-size: 27px;
+}
+
+.feature-card h3 {
+    color: #29265f;
+
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.main-footer {
+    background: #29265f;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 45px 20px;
+}
+
+.main-footer h3 {
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.main-footer p {
+    color: #d7d4ff;
+
+    margin-bottom: 8px;
+}
+
+.footer-small {
+    font-size: 13px;
+
+    opacity: 0.8;
+}
+
+
+/* ==========================================
+   GENERAL PAGES
+   DASHBOARD / HISTORY / GRAPH / ABOUT
+========================================== */
 
 .container {
     width: 100%;
     max-width: 1400px;
+
     margin: 0 auto;
+
     padding: 40px 5%;
-    flex: 1;
 }
-
-
-/* =========================================
-   PAGE TITLE
-========================================= */
 
 .page-title {
     text-align: center;
-    color: #34347d;
+
+    color: #29265f;
+
     font-size: 32px;
+
     margin-bottom: 10px;
 }
 
 .subtitle {
     text-align: center;
+
     color: #777;
-    margin-bottom: 35px;
-    font-size: 16px;
-    line-height: 1.6;
+
+    margin-bottom: 30px;
 }
 
 
-/* =========================================
-   DASHBOARD GRID
-========================================= */
+/* DASHBOARD */
 
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
     gap: 25px;
-    align-items: stretch;
 }
-
-
-/* =========================================
-   COMMON CARD
-========================================= */
 
 .card {
     background: white;
-    border-radius: 18px;
-    padding: 28px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    min-width: 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 18px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .card h2 {
-    color: #34347d;
-    margin-bottom: 25px;
-    font-size: 22px;
+    color: #29265f;
+
+    margin-bottom: 20px;
 }
 
 
-/* =========================================
-   LATEST HEALTH INFORMATION
-========================================= */
-
-.overview-card {
-    width: 100%;
-}
+/* STATS */
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
     gap: 18px;
 }
 
 .stat-box {
-    background: #f7f8ff;
-    padding: 20px;
+    background: #f7f7ff;
+
+    padding: 18px;
+
     border-radius: 12px;
-    border-left: 5px solid #5956d6;
+
+    border-left:
+        5px solid #6246ea;
 }
 
 .stat-label {
     color: #777;
+
     font-size: 14px;
-    margin-bottom: 8px;
+
+    margin-bottom: 6px;
 }
 
 .stat-value {
-    color: #263238;
-    font-size: 21px;
+    color: #29265f;
+
+    font-size: 19px;
+
     font-weight: bold;
 }
 
 
-/* =========================================
-   BODY VISUAL
-========================================= */
-
-.body-card {
-    text-align: center;
-}
-
-.body-visual {
-    width: 100%;
-    min-height: 360px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    overflow: hidden;
-    padding: 10px;
-}
-
-
-/* HUMAN BODY IMAGE */
-
-.human-body-image {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    height: 340px;
-    object-fit: contain;
-
-    animation: bodyFloat 3s ease-in-out infinite;
-}
-
-
-/* BODY MOVEMENT ANIMATION */
-
-@keyframes bodyFloat {
-
-    0% {
-        transform: translateY(0px) rotateY(0deg);
-    }
-
-    50% {
-        transform: translateY(-10px) rotateY(8deg);
-    }
-
-    100% {
-        transform: translateY(0px) rotateY(0deg);
-    }
-
-}
-
-
-/* BODY MESSAGE */
-
-.body-message {
-    margin-top: 15px;
-    font-size: 16px;
-    color: #555;
-}
-
-.body-message strong {
-    color: #34347d;
-}
-
-
-/* =========================================
-   BMI RESULT CARD
-========================================= */
-
-.bmi-result {
-    text-align: center;
-}
+/* BMI NUMBER */
 
 .bmi-number {
     font-size: 64px;
+
     font-weight: bold;
-    color: #34347d;
-    margin: 30px 0 20px;
+
+    color: #6246ea;
+
+    text-align: center;
+
+    margin: 25px 0;
 }
 
 
-/* BMI CATEGORY BADGE */
+/* CATEGORY BADGE */
 
 .category-badge {
     display: inline-block;
-    padding: 10px 22px;
+
+    padding: 10px 20px;
+
     border-radius: 25px;
+
     font-weight: bold;
-    font-size: 16px;
 }
 
 
-/* UNDERWEIGHT */
-
-.category-badge.underweight {
-    background: #dceeff;
-    color: #1769aa;
-}
-
-
-/* NORMAL */
-
-.category-badge.normal {
-    background: #dff5e5;
-    color: #16803c;
-}
-
-
-/* OVERWEIGHT */
-
-.category-badge.overweight {
-    background: #fff0cf;
-    color: #a66b00;
-}
-
-
-/* OBESE */
-
-.category-badge.obese {
-    background: #ffe0e0;
-    color: #c62828;
-}
-
-
-/* BMI DESCRIPTION */
-
-.bmi-description {
-    margin-top: 25px;
-    color: #777;
-    line-height: 1.6;
-}
-
-
-/* =========================================
-   DASHBOARD BUTTON
-========================================= */
-
-.dashboard-btn {
-    display: inline-block;
-    margin-top: 22px;
-    padding: 12px 20px;
-
-    background: #5956d6;
-    color: white;
-
-    text-decoration: none;
-    font-weight: bold;
-
-    border-radius: 8px;
-
-    transition: 0.3s;
-}
-
-.dashboard-btn:hover {
-    background: #403db5;
-    transform: translateY(-2px);
-}
-
-
-/* =========================================
-   RECOMMENDATION CARD
-========================================= */
-
-.recommendation-card {
-    display: flex;
-    flex-direction: column;
-}
-
-.recommendation {
-    background: #f7f8ff;
-    padding: 25px;
-    border-radius: 12px;
-    line-height: 1.8;
-    color: #444;
-    flex-grow: 1;
-}
-
-.recommendation strong {
-    color: #34347d;
-    display: block;
-    margin-bottom: 10px;
-}
-
-
-/* =========================================
-   WATER TRACKER
-========================================= */
-
-.water-card {
-    width: 100%;
-}
+/* WATER TRACKER */
 
 .water-content {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
-    gap: 30px;
+
+    gap: 25px;
+
     flex-wrap: wrap;
 }
 
 .water-info {
     flex: 1;
-    min-width: 250px;
+
+    min-width: 220px;
 }
-
-.water-info p {
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.water-status {
-    margin-top: 5px;
-}
-
-
-/* WATER PROGRESS BACKGROUND */
 
 .water-progress-bg {
     width: 100%;
+
     height: 22px;
+
     background: #e4e8f5;
+
     border-radius: 20px;
+
     overflow: hidden;
-    margin-bottom: 12px;
+
+    margin: 15px 0;
 }
-
-
-/* WATER PROGRESS */
 
 .water-progress {
     width: 0%;
+
     height: 100%;
+
     background: #4dabf7;
-    border-radius: 20px;
+
     transition: width 0.4s ease;
 }
 
-
-/* WATER CONTROLS */
-
 .water-controls {
     display: flex;
+
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+
+    gap: 18px;
 }
 
 .water-btn {
@@ -419,285 +1220,310 @@ body {
     height: 48px;
 
     border: none;
+
     border-radius: 50%;
 
-    background: #5956d6;
+    background: #6246ea;
+
     color: white;
 
-    font-size: 28px;
+    font-size: 26px;
+
     cursor: pointer;
-
-    transition: 0.3s;
-}
-
-.water-btn:hover {
-    background: #403db5;
-    transform: scale(1.08);
 }
 
 .water-count {
     font-size: 28px;
+
     font-weight: bold;
-    min-width: 35px;
-    text-align: center;
-    color: #34347d;
+
+    color: #29265f;
 }
 
 
-/* =========================================
-   QUICK ACTIONS
-========================================= */
+/* DASHBOARD BUTTON */
 
-.quick-actions-card {
-    text-align: center;
-}
-
-.quick-actions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.quick-actions .dashboard-btn {
-    margin-top: 0;
-}
-
-
-/* =========================================
-   EMPTY DASHBOARD
-========================================= */
-
-.empty-card {
-    max-width: 600px;
-    margin: 40px auto;
-    text-align: center;
-
-    background: white;
-    padding: 45px;
-
-    border-radius: 18px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-}
-
-.empty-card h2 {
-    color: #34347d;
-    margin-bottom: 15px;
-}
-
-.empty-card p {
-    color: #777;
-    margin-bottom: 25px;
-    line-height: 1.6;
-}
-
-.calculate-link {
+.dashboard-btn,
+.calculate-link,
+.download-report-btn {
     display: inline-block;
 
-    background: #5956d6;
+    background: #6246ea;
+
     color: white;
 
-    padding: 13px 25px;
-    border-radius: 8px;
-
     text-decoration: none;
+
+    padding: 12px 20px;
+
+    border-radius: 9px;
+
     font-weight: bold;
 
     transition: 0.3s;
 }
 
-.calculate-link:hover {
-    background: #403db5;
+.dashboard-btn:hover,
+.calculate-link:hover,
+.download-report-btn:hover {
+    background: #4f38cf;
+
     transform: translateY(-2px);
 }
 
 
-/* =========================================
-   TABLE STYLING
-========================================= */
+/* QUICK ACTIONS */
+
+.quick-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+}
+
+
+/* TABLE */
 
 .table-wrapper {
     width: 100%;
+
     overflow-x: auto;
 }
 
 table {
     width: 100%;
+
     border-collapse: collapse;
-    min-width: 900px;
+
+    min-width: 750px;
 }
 
 th,
 td {
     padding: 14px;
+
     text-align: center;
-    border-bottom: 1px solid #e8e8e8;
+
+    border-bottom:
+        1px solid #e8e8e8;
 }
 
 th {
-    background: #34347d;
+    background: #29265f;
+
     color: white;
 }
 
 tbody tr:hover {
-    background: #f7f8ff;
+    background: #f7f7ff;
 }
 
 
-/* =========================================
-   BUTTONS
-========================================= */
+/* DELETE BUTTON */
 
 .delete-btn {
     background: #e53935;
+
     color: white;
 
     border: none;
 
     padding: 9px 15px;
+
     border-radius: 7px;
 
     cursor: pointer;
-    font-weight: bold;
-
-    transition: 0.3s;
-}
-
-.delete-btn:hover {
-    background: #b71c1c;
-}
-
-.back-btn {
-    display: inline-block;
-
-    margin-top: 25px;
-
-    background: #5956d6;
-    color: white;
-
-    text-decoration: none;
-
-    padding: 12px 22px;
-    border-radius: 8px;
 
     font-weight: bold;
-
-    transition: 0.3s;
-}
-
-.back-btn:hover {
-    background: #403db5;
 }
 
 
-/* =========================================
-   WEIGHT TRACKING
-========================================= */
+/* EMPTY CARD */
 
-.weight-summary-card {
+.empty-card {
+    max-width: 600px;
+
+    margin: 40px auto;
+
     text-align: center;
+
+    background: white;
+
+    padding: 45px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-.weight-change {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 20px;
+.empty-card h2 {
+    color: #29265f;
+
+    margin-bottom: 15px;
 }
 
-.weight-change.gained {
-    color: #c62828;
-}
-
-.weight-change.lost {
-    color: #16803c;
-}
-
-.weight-change.no-change {
+.empty-card p {
     color: #777;
-}
 
-.weight-difference {
-    margin-top: 12px;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.weight-history-card {
-    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 
-/* =========================================
-   WEIGHT PROGRESS GRAPH
-========================================= */
-
-.weight-graph-card {
-    margin-top: 30px;
-}
-
-.weight-graph-container {
-    width: 100%;
-    padding: 20px;
-    background: #fafaff;
-    border-radius: 12px;
-    overflow-x: auto;
-}
-
-.weight-graph-image {
-    display: block;
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    margin: 0 auto;
-}
-
-
-/* =========================================
-   DOWNLOAD REPORT BUTTON
-========================================= */
-
-.download-report-btn {
-    display: inline-block;
-    margin-top: 20px;
-
-    padding: 12px 20px;
-
-    background: #5956d6;
-    color: white;
-
-    text-decoration: none;
-    border-radius: 8px;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-}
-
-.download-report-btn:hover {
-    background: #403db5;
-    transform: translateY(-2px);
-}
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
-footer {
-    text-align: center;
-    padding: 25px;
-    color: #777;
-}
-
-
-/* =========================================
+/* ==========================================
    TABLET RESPONSIVE
-========================================= */
+========================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
+    .home-hero {
+        padding: 60px 6%;
+
+        gap: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 43px;
+    }
+
+    .features-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE / TABLET
+========================================== */
+
+@media (max-width: 850px) {
+
+    .home-hero {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 700px;
+    }
+
+    .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-features {
+        justify-content: center;
+    }
+
+    .calculator-layout,
+    .result-section,
     .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    .brand {
+        justify-content: center;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 15px 4%;
+    }
+
+    .brand h2 {
+        font-size: 19px;
+    }
+
+    .nav-links {
+        gap: 4px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+
+        padding: 7px 9px;
+    }
+
+    .home-hero {
+        padding: 55px 6%;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .hero-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    .hero-heart {
+        font-size: 55px;
+    }
+
+    .hero-bmi-text strong {
+        font-size: 35px;
+    }
+
+    .calculator-section,
+    .features-section {
+        padding: 55px 5%;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .calculator-card,
+    .bmi-info-card {
+        padding: 23px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .result-card-modern,
+    .result-body-card {
+        padding: 25px;
+    }
+
+    .result-card-modern h2 {
+        font-size: 60px;
+    }
+
+    .result-details {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
         grid-template-columns: 1fr;
     }
 
@@ -705,324 +1531,22 @@ footer {
         padding: 30px 4%;
     }
 
-}
-
-
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
-
-@media (max-width: 600px) {
-
-    .navbar {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .nav-links {
-        gap: 14px;
-    }
-
     .page-title {
-        font-size: 26px;
+        font-size: 27px;
     }
 
     .card {
         padding: 20px;
     }
 
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
     .water-content {
         flex-direction: column;
+
         align-items: stretch;
     }
 
     .water-controls {
-        margin-top: 10px;
+        justify-content: center;
     }
 
-    .human-body-image {
-        height: 300px;
-        max-width: 250px;
-    }
-
-    .body-visual {
-        min-height: 310px;
-    }
-
-    .bmi-number {
-        font-size: 52px;
-    }
-
-    .quick-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .quick-actions .dashboard-btn {
-        width: 100%;
-    }
-
-}
-
-/* =========================================
-   HOME PAGE BMI FORM
-========================================= */
-
-.bmi-form-card {
-    max-width: 850px;
-    margin: 0 auto;
-}
-
-.form-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.form-header h1 {
-    color: #34347d;
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-.form-header p {
-    color: #777;
-    line-height: 1.6;
-}
-
-/* FORM GRID */
-
-.bmi-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-}
-
-/* FULL WIDTH INPUT */
-
-.full-width {
-    grid-column: 1 / -1;
-}
-
-/* FORM GROUP */
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    color: #34347d;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-/* INPUTS AND SELECT */
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 14px 15px;
-    border: 1px solid #d9dceb;
-    border-radius: 10px;
-    font-size: 16px;
-    outline: none;
-    background: #fafbff;
-    transition: 0.3s;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #5956d6;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(89, 86, 214, 0.12);
-}
-
-/* CALCULATE BUTTON */
-
-.button-container {
-    grid-column: 1 / -1;
-    text-align: center;
-    margin-top: 5px;
-}
-
-.calculate-btn {
-    width: 100%;
-    max-width: 400px;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    background: #5956d6;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.calculate-btn:hover {
-    background: #403db5;
-    transform: translateY(-2px);
-}
-
-/* FLASH MESSAGES */
-
-.flash-message {
-    padding: 14px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.flash-message.error {
-    background: #ffe0e0;
-    color: #c62828;
-}
-
-.flash-message.success {
-    background: #dff5e5;
-    color: #16803c;
-}
-
-/* RESULT SECTION */
-
-.result-section {
-    margin-top: 35px;
-}
-
-.result {
-    text-align: center;
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 25px;
-}
-
-.result h2 {
-    margin-bottom: 12px;
-}
-
-/* RESULT COLORS */
-
-.result.underweight {
-    background: #dceeff;
-    color: #1769aa;
-}
-
-.result.normal {
-    background: #dff5e5;
-    color: #16803c;
-}
-
-.result.overweight {
-    background: #fff0cf;
-    color: #a66b00;
-}
-
-.result.obese {
-    background: #ffe0e0;
-    color: #c62828;
-}
-
-/* HUMAN BODY RESULT */
-
-.human-body-result {
-    text-align: center;
-    background: #f7f8ff;
-    padding: 25px;
-    border-radius: 15px;
-}
-
-.human-body-result h2 {
-    color: #34347d;
-    margin-bottom: 15px;
-}
-
-.body-animation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.body-info {
-    color: #666;
-    margin-top: 15px;
-}
-
-/* RESULT ACTION BUTTONS */
-
-.result-actions {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 25px;
-    flex-wrap: wrap;
-}
-
-.action-btn {
-    background: #5956d6;
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.action-btn:hover {
-    background: #403db5;
-    transform: translateY(-2px);
-}
-
-.secondary-btn {
-    background: #34347d;
-}
-
-/* MOBILE RESPONSIVE */
-
-@media (max-width: 600px) {
-
-    .bmi-form {
-        grid-template-columns: 1fr;
-    }
-
-    .full-width {
-        grid-column: auto;
-    }
-
-    .button-container {
-        grid-column: auto;
-    }
-
-    .form-header h1 {
-        font-size: 26px;
-    }
-
-    .calculate-btn {
-        max-width: 100%;
-    }
-}
-
-/* =========================
-   QUICK ACTIONS
-========================= */
-
-.quick-actions-card {
-    text-align: center;
-}
-
-.quick-actions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.quick-actions .action-btn,
-.quick-actions .download-report-btn {
-    margin-top: 0;
 }

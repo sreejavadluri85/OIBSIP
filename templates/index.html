@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>BMI Calculator</title>
+    <title>BMI Calculator | Health Tracker</title>
 
     <link
         rel="stylesheet"
@@ -29,323 +29,840 @@
 
 <nav class="navbar">
 
-    <h2>BMI Calculator</h2>
+    <div class="brand">
+
+        <div class="brand-icon">
+            ❤️
+        </div>
+
+        <div>
+
+            <h2>BMI Calculator</h2>
+
+            <span>
+                Track • Analyze • Stay Healthy
+            </span>
+
+        </div>
+
+    </div>
+
 
     <div class="nav-links">
 
-        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('index') }}" class="active">
+            Home
+        </a>
 
-        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
 
-        <a href="{{ url_for('weight_tracker') }}">Weight Tracking</a>
+        <a href="{{ url_for('weight_tracker') }}">
+            Weight Tracking
+        </a>
 
-        <a href="{{ url_for('history') }}">BMI History</a>
+        <a href="{{ url_for('history') }}">
+            BMI History
+        </a>
 
-        <a href="{{ url_for('show_graph') }}">BMI Gauge</a>
+        <a href="{{ url_for('show_graph') }}">
+            BMI Gauge
+        </a>
 
-        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
 
     </div>
 
 </nav>
 
 
+
 <!-- ==========================================
-     MAIN CONTAINER
+     HERO SECTION
 ========================================== -->
 
-<main class="container">
+<section class="home-hero">
 
-    <div class="card bmi-form-card">
+    <div class="hero-content">
+
+        <span class="hero-tag">
+            ❤️ YOUR HEALTH MATTERS
+        </span>
 
 
-        <!-- PAGE HEADING -->
+        <h1>
 
-        <div class="form-header">
+            Know Your BMI,
+            <br>
 
-            <h1>Calculate Your BMI</h1>
+            <span>
+                Live a Healthier Life!
+            </span>
 
-            <p>
-                Enter your details to calculate your Body Mass Index.
-            </p>
+        </h1>
+
+
+        <p>
+
+            Calculate your Body Mass Index, understand
+            your health category, track your weight and
+            monitor your progress in one place.
+
+        </p>
+
+
+        <div class="hero-features">
+
+            <span>✓ BMI Calculation</span>
+
+            <span>✓ Health Dashboard</span>
+
+            <span>✓ Weight Tracking</span>
 
         </div>
 
 
-        <!-- ==========================================
-             FLASH MESSAGES
-        =========================================== -->
+        <a href="#bmi-calculator" class="hero-btn">
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
+            Calculate BMI →
 
-            {% if messages %}
+        </a>
 
-                {% for category, message in messages %}
+    </div>
 
-                    <div
-                        class="flash-message {{ 'error' if category == 'error' else 'success' }}"
+
+
+    <div class="hero-visual">
+
+        <div class="hero-circle">
+
+            <div class="hero-heart">
+                ❤️
+            </div>
+
+            <div class="hero-bmi-text">
+
+                <strong>BMI</strong>
+
+                <span>
+                    Stay Healthy
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==========================================
+     BMI CALCULATOR SECTION
+========================================== -->
+
+<section
+    class="calculator-section"
+    id="bmi-calculator"
+>
+
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            🧮 BMI CALCULATOR
+        </span>
+
+
+        <h2>
+            Calculate Your Body Mass Index
+        </h2>
+
+
+        <p>
+
+            Enter your details below to calculate
+            your BMI and understand your health category.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="calculator-layout">
+
+
+        <!-- ======================================
+             BMI FORM
+        ======================================= -->
+
+        <div class="calculator-card">
+
+
+            <div class="card-heading">
+
+                <div class="heading-icon">
+                    🧮
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Your Health Details
+                    </h2>
+
+                    <p>
+                        Fill in your information accurately.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ======================================
+                 FLASH MESSAGES
+            ======================================= -->
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+                {% if messages %}
+
+                    {% for category, message in messages %}
+
+                        <div
+                            class="message {{ 'error' if category == 'error' else 'success' }}"
+                        >
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+
+
+            <!-- ======================================
+                 FORM
+            ======================================= -->
+
+            <form
+                action="{{ url_for('calculate') }}"
+                method="POST"
+                class="bmi-form"
+            >
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+
+                        👤 Full Name
+
+                    </label>
+
+
+                    <input
+
+                        type="text"
+
+                        id="name"
+
+                        name="name"
+
+                        placeholder="Enter your full name"
+
+                        required
+
                     >
 
-                        {{ message }}
+                </div>
+
+
+
+                <!-- AGE + GENDER -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="age">
+
+                            🎂 Age
+
+                        </label>
+
+
+                        <input
+
+                            type="number"
+
+                            id="age"
+
+                            name="age"
+
+                            placeholder="Your age"
+
+                            min="2"
+
+                            max="120"
+
+                            required
+
+                        >
 
                     </div>
 
-                {% endfor %}
-
-            {% endif %}
-
-        {% endwith %}
 
 
-        <!-- ==========================================
-             BMI CALCULATOR FORM
-        =========================================== -->
+                    <div class="form-group">
 
-        <form
-            action="{{ url_for('calculate') }}"
-            method="POST"
-            class="bmi-form"
-        >
+                        <label for="gender">
+
+                            ⚧ Gender
+
+                        </label>
 
 
-            <!-- FULL NAME -->
+                        <select
 
-            <div class="form-group full-width">
+                            id="gender"
 
-                <label for="name">
-                    Full Name
-                </label>
+                            name="gender"
 
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Enter your full name"
-                    required
-                >
+                            required
 
-            </div>
+                        >
 
+                            <option value="">
+                                Select Gender
+                            </option>
 
-            <!-- AGE -->
+                            <option value="Male">
+                                Male
+                            </option>
 
-            <div class="form-group">
+                            <option value="Female">
+                                Female
+                            </option>
 
-                <label for="age">
-                    Age
-                </label>
+                            <option value="Other">
+                                Other
+                            </option>
 
-                <input
-                    type="number"
-                    id="age"
-                    name="age"
-                    placeholder="Enter your age"
-                    min="2"
-                    max="120"
-                    required
-                >
+                        </select>
 
-            </div>
+                    </div>
 
 
-            <!-- GENDER -->
-
-            <div class="form-group">
-
-                <label for="gender">
-                    Gender
-                </label>
-
-                <select
-                    id="gender"
-                    name="gender"
-                    required
-                >
-
-                    <option value="">
-                        Select Gender
-                    </option>
-
-                    <option value="Male">
-                        Male
-                    </option>
-
-                    <option value="Female">
-                        Female
-                    </option>
-
-                    <option value="Other">
-                        Other
-                    </option>
-
-                </select>
-
-            </div>
+                </div>
 
 
-            <!-- WEIGHT -->
 
-            <div class="form-group">
+                <!-- WEIGHT + HEIGHT -->
 
-                <label for="weight">
-                    Weight (kg)
-                </label>
-
-                <input
-                    type="number"
-                    id="weight"
-                    name="weight"
-                    placeholder="Example: 55"
-                    min="0.1"
-                    step="0.1"
-                    required
-                >
-
-            </div>
+                <div class="form-row">
 
 
-            <!-- HEIGHT -->
+                    <div class="form-group">
 
-            <div class="form-group">
+                        <label for="weight">
 
-                <label for="height">
-                    Height (meters)
-                </label>
+                            ⚖️ Weight (kg)
 
-                <input
-                    type="number"
-                    id="height"
-                    name="height"
-                    placeholder="Example: 1.65"
-                    min="0.01"
-                    step="0.01"
-                    required
-                >
-
-            </div>
+                        </label>
 
 
-            <!-- CALCULATE BUTTON -->
+                        <input
 
-            <div class="button-container">
+                            type="number"
+
+                            id="weight"
+
+                            name="weight"
+
+                            placeholder="Example: 65"
+
+                            min="0.1"
+
+                            step="0.1"
+
+                            required
+
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="height">
+
+                            📏 Height (meters)
+
+                        </label>
+
+
+                        <input
+
+                            type="number"
+
+                            id="height"
+
+                            name="height"
+
+                            placeholder="Example: 1.65"
+
+                            min="0.01"
+
+                            step="0.01"
+
+                            required
+
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- SUBMIT BUTTON -->
 
                 <button
                     type="submit"
                     class="calculate-btn"
                 >
 
-                    Calculate BMI
+                    🧮 Calculate My BMI
 
                 </button>
 
-            </div>
+
+            </form>
 
 
-        </form>
+        </div>
 
 
-        <!-- ==========================================
-             BMI RESULT
-        =========================================== -->
 
-        {% if bmi is defined and bmi is not none %}
+        <!-- ======================================
+             BMI INFORMATION CARD
+        ======================================= -->
 
-            <div class="result-section">
-
-
-                <div class="result {{ category_class }}">
-
-                    <h2>
-                        Your BMI: {{ "%.2f"|format(bmi) }}
-                    </h2>
-
-                    <p>
-
-                        Category:
-
-                        <strong>
-                            {{ category }}
-                        </strong>
-
-                    </p>
-
-                </div>
+        <div class="bmi-info-card">
 
 
-                <!-- BODY VISUALIZATION -->
+            <div class="info-icon">
 
-                <div class="human-body-result">
-
-                    <h2>
-                        Your Body Visualization
-                    </h2>
-
-
-                    <div class="body-animation">
-
-                        <img
-                            src="{{ url_for(
-                                'static',
-                                filename='images/human-body.png'
-                            ) }}"
-                            alt="Human Body Model"
-                            class="human-body-image"
-                        >
-
-                    </div>
-
-
-                    <p class="body-info">
-
-                        Your BMI result has been calculated
-                        successfully based on your weight and height.
-
-                    </p>
-
-                </div>
-
-
-                <!-- QUICK LINKS -->
-
-                <div class="result-actions">
-
-                    <a
-                        href="{{ url_for('dashboard') }}"
-                        class="action-btn"
-                    >
-                        View Dashboard
-                    </a>
-
-
-                    <a
-                        href="{{ url_for('show_graph') }}"
-                        class="action-btn secondary-btn"
-                    >
-                        View BMI Gauge
-                    </a>
-
-                </div>
-
+                ❤️
 
             </div>
 
-        {% endif %}
+
+            <h2>
+                Why Calculate Your BMI?
+            </h2>
+
+
+            <p>
+
+                BMI is a simple measurement that helps
+                you understand whether your weight is
+                generally within a healthy range for
+                your height.
+
+            </p>
+
+
+            <div class="bmi-ranges">
+
+
+                <div class="range-item underweight-range">
+
+                    <span>
+                        Underweight
+                    </span>
+
+                    <strong>
+                        Below 18.5
+                    </strong>
+
+                </div>
+
+
+                <div class="range-item normal-range">
+
+                    <span>
+                        Normal
+                    </span>
+
+                    <strong>
+                        18.5 – 24.9
+                    </strong>
+
+                </div>
+
+
+                <div class="range-item overweight-range">
+
+                    <span>
+                        Overweight
+                    </span>
+
+                    <strong>
+                        25 – 29.9
+                    </strong>
+
+                </div>
+
+
+                <div class="range-item obese-range">
+
+                    <span>
+                        Obese
+                    </span>
+
+                    <strong>
+                        30 and above
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
 
 
     </div>
 
-</main>
+
+</section>
+
+
+
+<!-- ==========================================
+     BMI RESULT SECTION
+========================================== -->
+
+{% if bmi is defined and bmi is not none %}
+
+
+<section class="result-section">
+
+
+    <div class="result-card-modern">
+
+
+        <span class="result-label">
+
+            YOUR BMI RESULT
+
+        </span>
+
+
+        <h2>
+
+            {{ "%.2f"|format(bmi) }}
+
+        </h2>
+
+
+        <span
+            class="result-category {{ category_class }}"
+        >
+
+            {{ category }}
+
+        </span>
+
+
+        <p>
+
+            Your Body Mass Index has been calculated
+            using your weight and height.
+
+        </p>
+
+
+
+        <!-- RESULT DETAILS -->
+
+        <div class="result-details">
+
+
+            <div>
+
+                <span>
+                    👤 Name
+                </span>
+
+                <strong>
+                    {{ name }}
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    ⚖️ Weight
+                </span>
+
+                <strong>
+                    {{ "%.1f"|format(weight) }} kg
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    📏 Height
+                </span>
+
+                <strong>
+                    {{ "%.2f"|format(height) }} m
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ACTION BUTTONS -->
+
+        <div class="result-actions">
+
+
+            <a
+                href="{{ url_for('dashboard') }}"
+                class="primary-action"
+            >
+
+                View Dashboard →
+
+            </a>
+
+
+            <a
+                href="{{ url_for('show_graph') }}"
+                class="secondary-action"
+            >
+
+                View BMI Gauge
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- BODY VISUAL -->
+
+    <div class="result-body-card">
+
+
+        <h2>
+            Your Health Overview
+        </h2>
+
+
+        <div class="body-image-wrapper">
+
+
+            <img
+
+                src="{{ url_for(
+                    'static',
+                    filename='images/human-body.png'
+                ) }}"
+
+                alt="Human Body Model"
+
+                class="human-body-image"
+
+            >
+
+
+        </div>
+
+
+        <p>
+
+            Your BMI category:
+
+            <strong>
+                {{ category }}
+            </strong>
+
+        </p>
+
+
+    </div>
+
+
+</section>
+
+
+{% endif %}
+
+
+
+<!-- ==========================================
+     FEATURES SECTION
+========================================== -->
+
+<section class="features-section">
+
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            ✨ HEALTH FEATURES
+        </span>
+
+
+        <h2>
+            Everything You Need in One Place
+        </h2>
+
+    </div>
+
+
+
+    <div class="features-grid">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <h3>
+                Health Dashboard
+            </h3>
+
+            <p>
+                View your latest BMI and health information.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📈
+            </div>
+
+            <h3>
+                Weight Tracking
+            </h3>
+
+            <p>
+                Track your weight changes and monitor progress.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💧
+            </div>
+
+            <h3>
+                Water Tracker
+            </h3>
+
+            <p>
+                Keep track of your daily water intake.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📋
+            </div>
+
+            <h3>
+                Health Reports
+            </h3>
+
+            <p>
+                Download your latest BMI health report.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
 
 
 <!-- ==========================================
      FOOTER
 ========================================== -->
 
-<footer>
+<footer class="main-footer">
+
+
+    <h3>
+        ❤️ BMI Calculator
+    </h3>
+
 
     <p>
-        BMI Calculator | Python Flask Project | Oasis Infobyte
+        Track your health. Understand your BMI.
+        Live a healthier life.
     </p>
+
+
+    <p class="footer-small">
+
+        Python Flask Project | Oasis Infobyte
+
+    </p>
+
 
 </footer>
 
