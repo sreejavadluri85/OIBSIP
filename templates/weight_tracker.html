@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weight Tracking | BMI Calculator</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+
+    <h2>BMI Calculator</h2>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('index') }}">Home</a>
+
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+
+        <a href="{{ url_for('weight_tracker') }}">
+            Weight Tracking
+        </a>
+
+        <a href="{{ url_for('history') }}">
+            BMI History
+        </a>
+
+        <a href="{{ url_for('show_graph') }}">
+            BMI Gauge
+        </a>
+
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<div class="container">
+
+    <h1 class="page-title">
+        Weight Tracking
+    </h1>
+
+    <p class="subtitle">
+        Track your weight changes and monitor your progress.
+    </p>
+
+
+    {% if records %}
+
+
+    <!-- =========================
+         WEIGHT SUMMARY
+    ========================== -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- LATEST WEIGHT -->
+
+        <div class="card weight-summary-card">
+
+            <h2>Latest Weight</h2>
+
+            <div class="bmi-number">
+
+                {{ "%.1f"|format(latest_weight) }}
+
+                <span style="font-size: 20px;">
+                    kg
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- PREVIOUS WEIGHT -->
+
+        <div class="card weight-summary-card">
+
+            <h2>Previous Weight</h2>
+
+
+            {% if previous_weight is not none %}
+
+                <div class="bmi-number">
+
+                    {{ "%.1f"|format(previous_weight) }}
+
+                    <span style="font-size: 20px;">
+                        kg
+                    </span>
+
+                </div>
+
+            {% else %}
+
+                <p class="empty-message">
+                    Add one more BMI record to compare your weight.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- WEIGHT CHANGE -->
+
+        <div class="card weight-summary-card">
+
+            <h2>Weight Change</h2>
+
+
+            {% if weight_difference is not none %}
+
+
+                {% if weight_difference > 0 %}
+
+                    <div class="weight-change gained">
+
+                        ⬆ Gained
+
+                    </div>
+
+
+                {% elif weight_difference < 0 %}
+
+                    <div class="weight-change lost">
+
+                        ⬇ Lost
+
+                    </div>
+
+
+                {% else %}
+
+                    <div class="weight-change no-change">
+
+                        ➖ No Change
+
+                    </div>
+
+                {% endif %}
+
+
+                <p class="weight-difference">
+
+                    {{ "%.1f"|format(weight_difference|abs) }} kg
+
+                </p>
+
+
+            {% else %}
+
+                <p class="empty-message">
+                    No comparison available yet.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- TOTAL RECORDS -->
+
+        <div class="card weight-summary-card">
+
+            <h2>Total Records</h2>
+
+            <div class="bmi-number">
+
+                {{ records|length }}
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         WEIGHT PROGRESS GRAPH
+    ========================== -->
+
+    <div class="card weight-graph-card">
+
+        <h2>Weight Progress Graph</h2>
+
+        <p class="subtitle">
+            Visual representation of your saved weight records.
+        </p>
+
+
+        <div class="weight-graph-container">
+
+            <img
+                src="{{ url_for('weight_graph_image') }}"
+                alt="Weight Progress Graph"
+                class="weight-graph-image"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         WEIGHT HISTORY
+    ========================== -->
+
+    <div class="card weight-history-card">
+
+        <h2>Weight History</h2>
+
+        <p class="subtitle">
+            Your saved weight records from BMI calculations.
+        </p>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>S.No</th>
+
+                        <th>Name</th>
+
+                        <th>Weight (kg)</th>
+
+                        <th>Date & Time</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for record in records|reverse %}
+
+                    <tr>
+
+                        <td>
+                            {{ loop.index }}
+                        </td>
+
+
+                        <td>
+                            {{ record['name'] }}
+                        </td>
+
+
+                        <td>
+                            {{ "%.1f"|format(record['weight']) }}
+                        </td>
+
+
+                        <td>
+                            {{ record['date'] }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    {% else %}
+
+
+    <!-- =========================
+         NO RECORDS
+    ========================== -->
+
+    <div class="empty-card">
+
+        <h2>
+            No Weight Records Available
+        </h2>
+
+        <p>
+            Calculate your BMI first to start tracking your weight.
+        </p>
+
+
+        <a
+            href="{{ url_for('index') }}"
+            class="calculate-link"
+        >
+
+            Calculate BMI
+
+        </a>
+
+    </div>
+
+
+    {% endif %}
+
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        BMI Calculator | Python Flask Project | Oasis Infobyte
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

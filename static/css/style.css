@@ -1,0 +1,1028 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+    background: #f1f4f9;
+    color: #263238;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    background: #34347d;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar h2 {
+    color: white;
+    font-size: 24px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd166;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 5%;
+    flex: 1;
+}
+
+
+/* =========================================
+   PAGE TITLE
+========================================= */
+
+.page-title {
+    text-align: center;
+    color: #34347d;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 35px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   DASHBOARD GRID
+========================================= */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    align-items: stretch;
+}
+
+
+/* =========================================
+   COMMON CARD
+========================================= */
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    min-width: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card h2 {
+    color: #34347d;
+    margin-bottom: 25px;
+    font-size: 22px;
+}
+
+
+/* =========================================
+   LATEST HEALTH INFORMATION
+========================================= */
+
+.overview-card {
+    width: 100%;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.stat-box {
+    background: #f7f8ff;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #5956d6;
+}
+
+.stat-label {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    color: #263238;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   BODY VISUAL
+========================================= */
+
+.body-card {
+    text-align: center;
+}
+
+.body-visual {
+    width: 100%;
+    min-height: 360px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    padding: 10px;
+}
+
+
+/* HUMAN BODY IMAGE */
+
+.human-body-image {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: 340px;
+    object-fit: contain;
+
+    animation: bodyFloat 3s ease-in-out infinite;
+}
+
+
+/* BODY MOVEMENT ANIMATION */
+
+@keyframes bodyFloat {
+
+    0% {
+        transform: translateY(0px) rotateY(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotateY(8deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotateY(0deg);
+    }
+
+}
+
+
+/* BODY MESSAGE */
+
+.body-message {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #555;
+}
+
+.body-message strong {
+    color: #34347d;
+}
+
+
+/* =========================================
+   BMI RESULT CARD
+========================================= */
+
+.bmi-result {
+    text-align: center;
+}
+
+.bmi-number {
+    font-size: 64px;
+    font-weight: bold;
+    color: #34347d;
+    margin: 30px 0 20px;
+}
+
+
+/* BMI CATEGORY BADGE */
+
+.category-badge {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/* UNDERWEIGHT */
+
+.category-badge.underweight {
+    background: #dceeff;
+    color: #1769aa;
+}
+
+
+/* NORMAL */
+
+.category-badge.normal {
+    background: #dff5e5;
+    color: #16803c;
+}
+
+
+/* OVERWEIGHT */
+
+.category-badge.overweight {
+    background: #fff0cf;
+    color: #a66b00;
+}
+
+
+/* OBESE */
+
+.category-badge.obese {
+    background: #ffe0e0;
+    color: #c62828;
+}
+
+
+/* BMI DESCRIPTION */
+
+.bmi-description {
+    margin-top: 25px;
+    color: #777;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   DASHBOARD BUTTON
+========================================= */
+
+.dashboard-btn {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 12px 20px;
+
+    background: #5956d6;
+    color: white;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.dashboard-btn:hover {
+    background: #403db5;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   RECOMMENDATION CARD
+========================================= */
+
+.recommendation-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.recommendation {
+    background: #f7f8ff;
+    padding: 25px;
+    border-radius: 12px;
+    line-height: 1.8;
+    color: #444;
+    flex-grow: 1;
+}
+
+.recommendation strong {
+    color: #34347d;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   WATER TRACKER
+========================================= */
+
+.water-card {
+    width: 100%;
+}
+
+.water-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.water-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.water-info p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.water-status {
+    margin-top: 5px;
+}
+
+
+/* WATER PROGRESS BACKGROUND */
+
+.water-progress-bg {
+    width: 100%;
+    height: 22px;
+    background: #e4e8f5;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+
+/* WATER PROGRESS */
+
+.water-progress {
+    width: 0%;
+    height: 100%;
+    background: #4dabf7;
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+
+/* WATER CONTROLS */
+
+.water-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.water-btn {
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #5956d6;
+    color: white;
+
+    font-size: 28px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.water-btn:hover {
+    background: #403db5;
+    transform: scale(1.08);
+}
+
+.water-count {
+    font-size: 28px;
+    font-weight: bold;
+    min-width: 35px;
+    text-align: center;
+    color: #34347d;
+}
+
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.quick-actions-card {
+    text-align: center;
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.quick-actions .dashboard-btn {
+    margin-top: 0;
+}
+
+
+/* =========================================
+   EMPTY DASHBOARD
+========================================= */
+
+.empty-card {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+
+    background: white;
+    padding: 45px;
+
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.empty-card h2 {
+    color: #34347d;
+    margin-bottom: 15px;
+}
+
+.empty-card p {
+    color: #777;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.calculate-link {
+    display: inline-block;
+
+    background: #5956d6;
+    color: white;
+
+    padding: 13px 25px;
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.calculate-link:hover {
+    background: #403db5;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   TABLE STYLING
+========================================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+th {
+    background: #34347d;
+    color: white;
+}
+
+tbody tr:hover {
+    background: #f7f8ff;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.delete-btn {
+    background: #e53935;
+    color: white;
+
+    border: none;
+
+    padding: 9px 15px;
+    border-radius: 7px;
+
+    cursor: pointer;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    background: #b71c1c;
+}
+
+.back-btn {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    background: #5956d6;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 12px 22px;
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #403db5;
+}
+
+
+/* =========================================
+   WEIGHT TRACKING
+========================================= */
+
+.weight-summary-card {
+    text-align: center;
+}
+
+.weight-change {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.weight-change.gained {
+    color: #c62828;
+}
+
+.weight-change.lost {
+    color: #16803c;
+}
+
+.weight-change.no-change {
+    color: #777;
+}
+
+.weight-difference {
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.weight-history-card {
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   WEIGHT PROGRESS GRAPH
+========================================= */
+
+.weight-graph-card {
+    margin-top: 30px;
+}
+
+.weight-graph-container {
+    width: 100%;
+    padding: 20px;
+    background: #fafaff;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.weight-graph-image {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   DOWNLOAD REPORT BUTTON
+========================================= */
+
+.download-report-btn {
+    display: inline-block;
+    margin-top: 20px;
+
+    padding: 12px 20px;
+
+    background: #5956d6;
+    color: white;
+
+    text-decoration: none;
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.download-report-btn:hover {
+    background: #403db5;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+}
+
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 30px 4%;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .page-title {
+        font-size: 26px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .water-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .water-controls {
+        margin-top: 10px;
+    }
+
+    .human-body-image {
+        height: 300px;
+        max-width: 250px;
+    }
+
+    .body-visual {
+        min-height: 310px;
+    }
+
+    .bmi-number {
+        font-size: 52px;
+    }
+
+    .quick-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .quick-actions .dashboard-btn {
+        width: 100%;
+    }
+
+}
+
+/* =========================================
+   HOME PAGE BMI FORM
+========================================= */
+
+.bmi-form-card {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header h1 {
+    color: #34347d;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.form-header p {
+    color: #777;
+    line-height: 1.6;
+}
+
+/* FORM GRID */
+
+.bmi-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+/* FULL WIDTH INPUT */
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/* FORM GROUP */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: #34347d;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* INPUTS AND SELECT */
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #d9dceb;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    background: #fafbff;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #5956d6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(89, 86, 214, 0.12);
+}
+
+/* CALCULATE BUTTON */
+
+.button-container {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.calculate-btn {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    background: #5956d6;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.calculate-btn:hover {
+    background: #403db5;
+    transform: translateY(-2px);
+}
+
+/* FLASH MESSAGES */
+
+.flash-message {
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.flash-message.error {
+    background: #ffe0e0;
+    color: #c62828;
+}
+
+.flash-message.success {
+    background: #dff5e5;
+    color: #16803c;
+}
+
+/* RESULT SECTION */
+
+.result-section {
+    margin-top: 35px;
+}
+
+.result {
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.result h2 {
+    margin-bottom: 12px;
+}
+
+/* RESULT COLORS */
+
+.result.underweight {
+    background: #dceeff;
+    color: #1769aa;
+}
+
+.result.normal {
+    background: #dff5e5;
+    color: #16803c;
+}
+
+.result.overweight {
+    background: #fff0cf;
+    color: #a66b00;
+}
+
+.result.obese {
+    background: #ffe0e0;
+    color: #c62828;
+}
+
+/* HUMAN BODY RESULT */
+
+.human-body-result {
+    text-align: center;
+    background: #f7f8ff;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.human-body-result h2 {
+    color: #34347d;
+    margin-bottom: 15px;
+}
+
+.body-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-info {
+    color: #666;
+    margin-top: 15px;
+}
+
+/* RESULT ACTION BUTTONS */
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    background: #5956d6;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.action-btn:hover {
+    background: #403db5;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background: #34347d;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .bmi-form {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .button-container {
+        grid-column: auto;
+    }
+
+    .form-header h1 {
+        font-size: 26px;
+    }
+
+    .calculate-btn {
+        max-width: 100%;
+    }
+}
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-actions-card {
+    text-align: center;
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.quick-actions .action-btn,
+.quick-actions .download-report-btn {
+    margin-top: 0;
+}
