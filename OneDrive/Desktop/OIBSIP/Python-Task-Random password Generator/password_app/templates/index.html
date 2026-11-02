@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Secure Password Generator</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="password-card">
+
+            <h1>🔐 Password Generator</h1>
+
+            <p class="subtitle">
+                Create strong and secure passwords instantly
+            </p>
+
+
+            <!-- Password Output -->
+
+            <div class="password-box">
+
+                <input
+                    type="text"
+                    id="password"
+                    value="{{ password }}"
+                    placeholder="Your secure password will appear here"
+                    readonly
+                >
+
+                <button
+                    type="button"
+                    id="togglePassword"
+                    onclick="togglePasswordVisibility()"
+                    title="Show or Hide Password"
+                >
+                    👁️
+                </button>
+
+                <button
+                    type="button"
+                    id="copyButton"
+                    onclick="copyPassword()"
+                    title="Copy Password"
+                >
+                    📋 Copy
+                </button>
+
+            </div>
+
+
+            <!-- Show Validation Error -->
+
+            {% if error %}
+                <div class="error-message">
+                    ⚠️ {{ error }}
+                </div>
+            {% endif %}
+
+
+            <!-- Password Generator Form -->
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <!-- Password Length -->
+
+                <div class="length-section">
+
+                    <label>
+                        Password Length:
+                        <span id="lengthValue">12</span>
+                    </label>
+
+                    <input
+                        type="range"
+                        name="length"
+                        id="length"
+                        min="8"
+                        max="50"
+                        value="12"
+                    >
+
+                </div>
+
+
+                <!-- Password Options -->
+
+                <div class="options">
+
+                    <label>
+                        <input type="checkbox" name="uppercase">
+                        Uppercase (A-Z)
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="lowercase"
+                            checked
+                        >
+                        Lowercase (a-z)
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="numbers"
+                            checked
+                        >
+                        Numbers (0-9)
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="symbols">
+                        Symbols (!@#$)
+                    </label>
+
+                    <!-- Advanced Feature -->
+
+                    <label class="exclude-option">
+                        <input
+                            type="checkbox"
+                            name="exclude_ambiguous"
+                        >
+                        Exclude ambiguous characters
+                        (0, O, l, 1)
+                    </label>
+
+                </div>
+
+
+                <!-- Generate Password -->
+
+                <button type="submit" class="generate-btn">
+                    🔐 Generate Secure Password
+                </button>
+
+            </form>
+
+
+            <!-- Password Strength -->
+
+            <div class="strength">
+
+                <p>
+                    Password Strength:
+                    <span id="strengthText">
+                        Generate a password
+                    </span>
+                </p>
+
+                <div class="strength-bar">
+
+                    <div
+                        class="strength-progress"
+                        id="strengthProgress"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Password History -->
+
+            <div class="history">
+
+                <div class="history-header">
+
+                    <h2>🕒 Password History</h2>
+
+                    <button
+                        type="button"
+                        onclick="clearHistory()"
+                        class="clear-btn"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+                <div id="historyList">
+
+                    <p class="empty-history">
+                        No passwords generated yet.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- External JavaScript -->
+
+    <script src="{% static 'script.js' %}"></script>
+
+</body>
+
+</html>
